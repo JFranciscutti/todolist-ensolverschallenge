@@ -1,7 +1,6 @@
 package com.ensolv.todolist.controller;
 
 import com.ensolv.todolist.model.Item;
-import com.ensolv.todolist.repo.TodoRepo;
 import com.ensolv.todolist.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,19 +18,19 @@ public class TodoController {
     @GetMapping("/all")
     public ResponseEntity<List<Item>> getAllItems() {
         List<Item> items = todoService.findAllItems();
-        return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
     @PostMapping("/add")
     public ResponseEntity<Item> addItem(@RequestBody Item item) {
         Item i= todoService.addItem(item);
-        return new ResponseEntity<Item>(i,HttpStatus.CREATED);
+        return new ResponseEntity<>(i, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
     public ResponseEntity<Item> update(@RequestBody Item item){
         Item i= todoService.updateItem(item);
-        return new ResponseEntity<Item>(i,HttpStatus.OK);
+        return new ResponseEntity<>(i, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -4,10 +4,12 @@ import com.ensolv.todolist.model.Item;
 import com.ensolv.todolist.repo.TodoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @Service
+@CrossOrigin("*")
 public class TodoService {
     private final TodoRepo todorepo;
 
@@ -22,6 +24,10 @@ public class TodoService {
 
    public List<Item> findAllItems(){
         return todorepo.findAll();
+   }
+
+   public Item findItemById(Long id){
+        return todorepo.findById(id).orElseThrow(()-> new IllegalArgumentException("USER NOT FOUND"));
    }
 
    public Item updateItem(Item item){

@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping(value = "/todo")
 public class TodoController {
     @Autowired
@@ -19,6 +21,11 @@ public class TodoController {
     public ResponseEntity<List<Item>> getAllItems() {
         List<Item> items = todoService.findAllItems();
         return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItemById(@PathVariable Long id){
+        Item i = todoService.findItemById(id);
+        return new ResponseEntity<>(i,HttpStatus.OK);
     }
 
     @PostMapping("/add")

@@ -16,6 +16,9 @@ Tecnologías utilizadas:
 
 
 Observaciones acerca del proyecto:
+
 *Falta la funcionalidad de marcar como hecha o no hecha una tarea.
+
 *En vez de editar una tarea existente, crea otra nueva.
+
 *No me alcanzó el tiempo para desarrollar todo.

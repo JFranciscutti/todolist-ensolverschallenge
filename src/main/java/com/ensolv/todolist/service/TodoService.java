@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 
 @Service
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:3000")
 public class TodoService {
     private final TodoRepo todorepo;
 

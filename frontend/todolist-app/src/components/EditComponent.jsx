@@ -20,6 +20,7 @@ class EditComponent extends Component {
     console.log(this.state);
   }
 
+  //Vuelve a la pagina principal
   cancelButton() {
     this.props.history.push("/");
   }
@@ -30,9 +31,8 @@ class EditComponent extends Component {
       title: values.title,
       done: this.state.todo.done,
     };
+    //Hace el update en el backend y vuelve a la página principal en el frontend
     TodoDataService.updateTodo(todo).then(() => {
-      console.log(values);
-      console.log(this.state.todo.id);
       this.props.history.push("/");
     });
   }

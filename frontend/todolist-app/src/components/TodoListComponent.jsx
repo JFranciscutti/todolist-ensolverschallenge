@@ -47,7 +47,11 @@ class TodoListComponent extends Component {
           </thead>
           <tbody>
             {this.state.todo.map((todoItem) => (
-              <TodoComponent key={todoItem.id} todo={todoItem} history={this.props.history} />
+              <TodoComponent
+                key={todoItem.id}
+                todo={todoItem}
+                history={this.props.history}
+              />
             ))}
           </tbody>
         </table>
@@ -69,5 +73,4 @@ class TodoListComponent extends Component {
     );
   }
 }
-
 export default TodoListComponent;

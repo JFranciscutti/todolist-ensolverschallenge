@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TodoDataService from "../api/TodoDataService";
+import TodoListComponent from "./TodoListComponent";
 
 class TodoComponent extends Component {
   constructor(props) {
@@ -17,12 +18,11 @@ class TodoComponent extends Component {
     this.checkboxOnChange = this.checkboxOnChange.bind(this);
   }
 
+  //Elimina en backend el item con el id del estado
   deleteTodoClicked() {
     TodoDataService.deleteTodo(this.state.todo.id);
-    //falta refresh
   }
 
-  //ARREGLAR DELETE EN BACKEND
   checkboxOnChange() {
     //Actualizo en el frontend
     let check = !this.state.todo.done;
@@ -33,13 +33,14 @@ class TodoComponent extends Component {
         done: check,
       },
     };
+    console.log(check);
     console.log(this.state.todo);
     //Actualizo en el backend
     TodoDataService.updateTodo(this.state.todo);
   }
 
+  //Cambia a la página para editar la tarea
   updateTodoClicked() {
-    console.log(this.props.history)
     this.props.history.push(`/edit/${this.state.todo.id}`);
   }
 
@@ -52,7 +53,7 @@ class TodoComponent extends Component {
             className="form-check-input"
             type="checkbox"
             defaultChecked={done}
-            onChange={this.checkboxOnChange}
+            onClick={this.checkboxOnChange}
           />
         </td>
         <td>{title}</td>
